@@ -121,7 +121,7 @@
  *
  * :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000]
  */
-#define BAUDRATE 250000
+#define BAUDRATE 115200 //kwa
 
 // Enable the Bluetooth serial interface on AT90USB devices
 //#define BLUETOOTH
@@ -1128,8 +1128,8 @@
 // @section machine
 
 // The size of the print bed
-#define X_BED_SIZE 230 //kwa
-#define Y_BED_SIZE 230 //kwa
+#define X_BED_SIZE 235 //kwa
+#define Y_BED_SIZE 235 //kwa
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
