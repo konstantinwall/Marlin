@@ -992,7 +992,7 @@
  *
  * Specify a Probe position as { X, Y, Z }
  */
-#define NOZZLE_TO_PROBE_OFFSET { 23, 0, -2.5 } //kwa
+#define NOZZLE_TO_PROBE_OFFSET { 23, 0, -1.92 } //kwa
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1286,7 +1286,7 @@
 #if EITHER(AUTO_BED_LEVELING_LINEAR, AUTO_BED_LEVELING_BILINEAR)
 
   // Set the number of grid points per dimension.
-  #define GRID_MAX_POINTS_X 13 //kwa
+  #define GRID_MAX_POINTS_X 10 //kwa
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   // Probe along the Y axis, advancing X after each column
@@ -1398,8 +1398,8 @@
 #endif
 
 // Homing speeds (mm/m)
-#define HOMING_FEEDRATE_XY (25*60) //kwa
-#define HOMING_FEEDRATE_Z  (20*60) //kwa
+#define HOMING_FEEDRATE_XY (30*60) //kwa
+#define HOMING_FEEDRATE_Z  (10*60) //kwa
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
@@ -1513,8 +1513,8 @@
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
 
 #define PREHEAT_2_LABEL       "ABS"
-#define PREHEAT_2_TEMP_HOTEND 240
-#define PREHEAT_2_TEMP_BED    110
+#define PREHEAT_2_TEMP_HOTEND 250 //kwa
+#define PREHEAT_2_TEMP_BED    60 //kwa
 #define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
 
 #define PREHEAT_3_LABEL       "PETG" //kwa
