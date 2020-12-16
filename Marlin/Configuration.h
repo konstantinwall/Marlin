@@ -1276,14 +1276,8 @@
  * Normally G28 leaves leveling disabled on completion. Enable
  * this option to have G28 restore the prior leveling state.
  */
-<<<<<<< HEAD
 #define RESTORE_LEVELING_AFTER_G28 //kwa
-<<<<<<< HEAD
-=======
-//#define RESTORE_LEVELING_AFTER_G28
->>>>>>> parent of 55f41040f2... Merge branch 'bugfix-2.0.x' of https://github.com/MarlinFirmware/Marlin into bugfix-2.0.x
-=======
->>>>>>> parent of 1beb7296ea... Merge branch 'bugfix-2.0.x' into HEVO_SKR_1.3_BLTouch
+
 
 /**
  * Enable detailed logging of G28, G29, M48, etc.
