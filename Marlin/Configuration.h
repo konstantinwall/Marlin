@@ -1013,7 +1013,7 @@
 #define PROBING_MARGIN 5 //kwa
 
 // X and Y axis travel speed (mm/min) between probes
-#define XY_PROBE_SPEED (10000)
+#define XY_PROBE_SPEED (133*60) //kwa vor merge = 10000
 
 // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
 #define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
@@ -1473,7 +1473,7 @@
 #endif
 
 // Homing speeds (mm/m)
-#define HOMING_FEEDRATE_XY (40*60) //kwa
+#define HOMING_FEEDRATE_XY (30*60) //kwa
 #define HOMING_FEEDRATE_Z  (10*60) //kwa
 
 // Validate that endstops are triggered on homing moves
