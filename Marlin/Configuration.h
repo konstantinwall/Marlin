@@ -1312,7 +1312,7 @@
 #define PREHEAT_BEFORE_LEVELING //kwa
 #if ENABLED(PREHEAT_BEFORE_LEVELING)
   //#define LEVELING_NOZZLE_TEMP 120 //kwa
-  #define LEVELING_BED_TEMP     50
+  #define LEVELING_BED_TEMP     60
 #endif
 
 /**
