@@ -29,7 +29,6 @@
 #include "../shared/math_32bit.h"
 #include "../shared/HAL_SPI.h"
 #include "fastio.h"
-#include "Servo.h"
 #include "watchdog.h"
 #include "MarlinSerial.h"
 
@@ -111,8 +110,6 @@
 typedef int16_t pin_t;
 
 #define HAL_SERVO_LIB libServo
-#define PAUSE_SERVO_OUTPUT() libServo::pause_all_servos()
-#define RESUME_SERVO_OUTPUT() libServo::resume_all_servos()
 
 // ------------------------
 // Public Variables

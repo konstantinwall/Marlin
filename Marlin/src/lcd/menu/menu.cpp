@@ -188,7 +188,8 @@ void MarlinUI::goto_screen(screenFunc_t screen, const uint16_t encoder/*=0*/, co
           doubleclick_expire_ms = millis() + DOUBLECLICK_MAX_INTERVAL;
       }
       else if (screen == status_screen && currentScreen == menu_main && PENDING(millis(), doubleclick_expire_ms)) {
-        if (BABYSTEP_ALLOWED())
+        if ( (ENABLED(BABYSTEP_WITHOUT_HOMING) || all_axes_known())
+          && (ENABLED(BABYSTEP_ALWAYS_AVAILABLE) || printer_busy()) )
           screen = TERN(BABYSTEP_ZPROBE_OFFSET, lcd_babystep_zoffset, lcd_babystep_z);
         else {
           #if ENABLED(MOVE_Z_WHEN_IDLE)
@@ -205,8 +206,8 @@ void MarlinUI::goto_screen(screenFunc_t screen, const uint16_t encoder/*=0*/, co
     screen_items = items;
     if (on_status_screen()) {
       defer_status_screen(false);
-      clear_menu_history();
       TERN_(AUTO_BED_LEVELING_UBL, ubl.lcd_map_control = false);
+      screen_history_depth = 0;
     }
 
     clear_lcd();

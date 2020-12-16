@@ -109,8 +109,6 @@
   #else
     #error "LCD_SERIAL_PORT must be -1 or from 1 to 3. Please update your configuration."
   #endif
-
-  #define SERIAL_GET_TX_BUFFER_FREE() LCD_SERIAL.availableForWrite()
 #endif
 
 // Set interrupt grouping for this MCU
@@ -202,9 +200,17 @@ extern "C" {
 
 extern "C" char* _sbrk(int incr);
 
-static inline int freeMemory() {
+/*
+static int freeMemory() {
+  volatile int top;
+  top = (int)((char*)&top - reinterpret_cast<char*>(_sbrk(0)));
+  return top;
+}
+*/
+
+static int freeMemory() {
   volatile char top;
-  return &top - _sbrk(0);
+  return &top - reinterpret_cast<char*>(_sbrk(0));
 }
 
 #pragma GCC diagnostic pop

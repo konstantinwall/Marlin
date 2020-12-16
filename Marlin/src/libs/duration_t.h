@@ -106,10 +106,8 @@ struct duration_t {
     return this->value;
   }
 
-  #if GCC_VERSION <= 50000
-    #pragma GCC diagnostic push
-    #pragma GCC diagnostic ignored "-Wformat-overflow"
-  #endif
+  #pragma GCC diagnostic push
+  #pragma GCC diagnostic ignored "-Wformat-overflow"
 
   /**
    * @brief Formats the duration as a string
@@ -169,7 +167,5 @@ struct duration_t {
     }
   }
 
-  #if GCC_VERSION <= 50000
-    #pragma GCC diagnostic pop
-  #endif
+  #pragma GCC diagnostic pop
 };

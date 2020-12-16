@@ -559,11 +559,13 @@ void MarlinSettings::postprocess() {
 #endif // SD_FIRMWARE_UPDATE
 
 #ifdef ARCHIM2_SPI_FLASH_EEPROM_BACKUP_SIZE
-  static_assert(EEPROM_OFFSET + sizeof(SettingsData) < ARCHIM2_SPI_FLASH_EEPROM_BACKUP_SIZE,
-                "ARCHIM2_SPI_FLASH_EEPROM_BACKUP_SIZE is insufficient to capture all EEPROM data.");
+  static_assert(
+      EEPROM_OFFSET + sizeof(SettingsData) < ARCHIM2_SPI_FLASH_EEPROM_BACKUP_SIZE,
+      "ARCHIM2_SPI_FLASH_EEPROM_BACKUP_SIZE is insufficient to capture all EEPROM data."
+    );
 #endif
 
-#define DEBUG_OUT ENABLED(DEBUG_LEVELING_FEATURE)
+#define DEBUG_OUT ENABLED(EEPROM_CHITCHAT)
 #include "../core/debug_out.h"
 
 #if ENABLED(EEPROM_SETTINGS)
@@ -696,7 +698,7 @@ void MarlinSettings::postprocess() {
     // Global Leveling
     //
     {
-      const float zfh = TERN(ENABLE_LEVELING_FADE_HEIGHT, planner.z_fade_height, (DEFAULT_LEVELING_FADE_HEIGHT));
+      const float zfh = TERN(ENABLE_LEVELING_FADE_HEIGHT, planner.z_fade_height, 10.0f);
       EEPROM_WRITE(zfh);
     }
 
@@ -2294,14 +2296,14 @@ void MarlinSettings::postprocess() {
 
           if (!ubl.sanity_check()) {
             SERIAL_EOL();
-            #if BOTH(EEPROM_CHITCHAT, DEBUG_LEVELING_FEATURE)
+            #if ENABLED(EEPROM_CHITCHAT)
               ubl.echo_name();
               DEBUG_ECHOLNPGM(" initialized.\n");
             #endif
           }
           else {
             eeprom_error = true;
-            #if BOTH(EEPROM_CHITCHAT, DEBUG_LEVELING_FEATURE)
+            #if ENABLED(EEPROM_CHITCHAT)
               DEBUG_ECHOPGM("?Can't enable ");
               ubl.echo_name();
               DEBUG_ECHOLNPGM(".");
@@ -2588,7 +2590,7 @@ void MarlinSettings::reset() {
   //
   // Global Leveling
   //
-  TERN_(ENABLE_LEVELING_FADE_HEIGHT, new_z_fade_height = (DEFAULT_LEVELING_FADE_HEIGHT));
+  TERN_(ENABLE_LEVELING_FADE_HEIGHT, new_z_fade_height = 0.0);
   TERN_(HAS_LEVELING, reset_bed_level());
 
   #if HAS_BED_PROBE
