@@ -2473,7 +2473,7 @@
   //#define NEOPIXEL_PIXELS 30       // Number of LEDs in the strip, larger of 2 strips if 2 neopixel strips are used //kwa; Mini12864_Panel
   //#define NEOPIXEL_IS_SEQUENTIAL   // Sequential display for temperature change - LED by LED. Disable to change all LEDs at once. //kwa; Mini12864_Panel
   //#define NEOPIXEL_BRIGHTNESS 127  // Initial brightness (0-255) //kwa; Mini12864_Panel
-  //#define NEOPIXEL_STARTUP_TEST  // Cycle through colors at startup
+  #define NEOPIXEL_STARTUP_TEST  // Cycle through colors at startup
 
   // Use a single Neopixel LED for static (background) lighting
   #define NEOPIXEL_BKGD_LED_INDEX  0               // Index of the LED to use //kwa; Mini12864_Panel
